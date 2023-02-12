@@ -30,7 +30,7 @@ Using our mobile app, users are able to get a a personalized workout plan based 
 ## Our team
 - Christina Nguyen
 - Tran Pham
-- [Conroy Ricketts](https://github.com/conroyr41)
+- [Conroy Ricketts](https://www.linkedin.com/in/conroy-ricketts/)
 - Jordan Miller
 - Jesvin Joseph
 
