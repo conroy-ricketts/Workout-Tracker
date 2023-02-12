@@ -34,7 +34,11 @@ Using our mobile app, users are able to get a a personalized workout plan based 
 - Jordan Miller
 
 ## How to use the app
-- TBD
+1. Be sure to have node.js and expo client installed.
+2. In a terminal, run the command "npm install" to install the project dependencies.
+3. Clone the Workout Tracker repository from GitHub.
+4. In a terminal, run the command "expo start"
+5. Run the app on your favorite emulator or phone!
 
 ## What's next for Workout Tracker
 - TBD
