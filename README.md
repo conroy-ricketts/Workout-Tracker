@@ -32,6 +32,7 @@ Using our mobile app, users are able to get a a personalized workout plan based 
 - Tran Pham
 - [Conroy Ricketts](https://github.com/conroyr41)
 - Jordan Miller
+- Jesvin Joseph
 
 ## How to use the app
 1. Be sure to have node.js and expo client installed.
