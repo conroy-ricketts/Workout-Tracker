@@ -1,7 +1,8 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { registerRootComponent } from 'expo'
+import GetStartedButton from './Components/GetStartedButton'
 
 export default function App(): JSX.Element {
   return (
@@ -11,6 +12,7 @@ export default function App(): JSX.Element {
     </View>
   )
 }
+
 
 const styles = StyleSheet.create({
   container: {
