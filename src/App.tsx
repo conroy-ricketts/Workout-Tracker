@@ -9,7 +9,6 @@ export default function App(): JSX.Element {
         <View style={styles.container}>
             <Text>Hello World!</Text>
             <StatusBar style="auto" />
-            <ProgressChart />
         </View>
     )
 }
