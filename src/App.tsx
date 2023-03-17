@@ -2,11 +2,12 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { registerRootComponent } from 'expo'
+import OnboardingScreen from './screens/onboarding/OnboardingScreen'
 
 export default function App(): JSX.Element {
   return (
     <View style={styles.container}>
-      <Text>Hello World!</Text>
+      <OnboardingScreen />
       <StatusBar style="auto" />
     </View>
   )
