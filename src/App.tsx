@@ -2,7 +2,6 @@ import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import ProgressChart from './components/ProgressChart'
 
 export default function App(): JSX.Element {
     return (
