@@ -1,8 +1,7 @@
 import React from 'react'
 import { Image, Text, View, StyleSheet,StatusBar, Dimensions, Animated} from 'react-native'
-import { scale } from 'react-native-size-matters'
 const {width,height} = Dimensions.get('window')
-//../../../assets/AppLogo
+
 const items = [{
   id: 1,
   image: require('../../../assets/1.jpg'),
@@ -172,10 +171,9 @@ const styles = StyleSheet.create({
     zIndex: 3,
   },
   description:{
-    fontSize: scale(11),
+    fontSize: 11,
     color:'#ffffff',
     textAlign: 'center',
-
     fontWeight: '400',
     lineHeight: 18,
   },
@@ -207,7 +205,7 @@ const styles = StyleSheet.create({
   indicatorContainer:{
     width: (width * .25),
     height: 4,
-    bottom: height < 900 ? (height * 0.32 - 133):(height * 0.32 - 180),
+    bottom: height < 900 ? (height * 0.32 - 120):(height * 0.32 - 180),
     zIndex: 3,
     resizeMode: 'contain'
 
