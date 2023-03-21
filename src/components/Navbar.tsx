@@ -12,8 +12,8 @@ const Tab = createBottomTabNavigator();
 type TabBarIconProps = {
   focused: boolean;
 }
-//Could not figure out how to import images as .svg
-//in assets/NavBarIcons I have the downloaded images as both .png and .svg in case u want to fix it
+
+// TODO: These images need to be SVGs.
 const TrackerTabOptions = {
   tabBarIcon: ({ focused }: TabBarIconProps) => (
     focused ?
