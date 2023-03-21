@@ -4,39 +4,43 @@ import { StyleSheet, Text, View } from 'react-native'
 import { generateDateRangeForStartDate, generateMockData } from '../helpers/ProgressChartDataHelper'
 import { AppColors } from '../resources/AppColors'
 
-export default function ProgressChart(): JSX.Element {
-    let mockData: WorkoutIndicatorModel[] =  generateMockData(
+type ChartProps = {
+    chartType: 'compact' | 'normal'
+}
+
+export default function ProgressChart(props: ChartProps): JSX.Element {
+    const mockData: WorkoutIndicatorModel[] =  generateMockData(
         new Date('2023-01-01'),
         new Date('2024-01-01')
     )
 
-    let startDate: Date = mockData[0].dateOccured
+    const startDate: Date = mockData[0].dateOccured
 
-    let chartRows: number = 7
-    let chartCols: number = 18
-    let currentDateRange: DateRangeModel = generateDateRangeForStartDate(startDate, chartRows, chartCols)
+    const chartRows = 7
+    const chartCols = 18
+    const currentDateRange: DateRangeModel = generateDateRangeForStartDate(startDate, chartRows, chartCols)
   
-    let dateLabelFormat: string = 'MMM Qo'
-    let startDateLabel: string = moment(currentDateRange.startDate).utc().format(dateLabelFormat)
-    let middleDateLabel: string = moment(currentDateRange.middleDate).utc().format(dateLabelFormat)
-    let endDateLabel: string = moment(currentDateRange.endDate).utc().format(dateLabelFormat)
+    const dateLabelFormat = 'MMM Qo'
+    const startDateLabel: string = moment(currentDateRange.startDate).utc().format(dateLabelFormat)
+    const middleDateLabel: string = moment(currentDateRange.middleDate).utc().format(dateLabelFormat)
+    const endDateLabel: string = moment(currentDateRange.endDate).utc().format(dateLabelFormat)
 
-    let workoutIndicatorColumns: WorkoutIndicatorModel[][] = []
+    const workoutIndicatorColumns: WorkoutIndicatorModel[][] = []
     for (let i = 0; i < chartCols; i++) {
-        let workoutIndicators: WorkoutIndicatorModel[] = []
+        const workoutIndicators: WorkoutIndicatorModel[] = []
         for (let j = 0; j < chartRows; j++) {
-            let index = j + chartRows * i
+            const index = j + chartRows * i
             workoutIndicators.push(mockData[index])
         }
         workoutIndicatorColumns.push(workoutIndicators)
     }
 
     // TODO: We need to vary these colors based off of the user's theme (light theme or dark theme)
-    let indicatorOnColor: string = AppColors.SeaSerpent
-    let indicatorOffColor: string = AppColors.MaastrichtBlue
-    let textColor: string = AppColors.MaastrichtBlue
+    const indicatorOnColor: string = AppColors.SeaSerpent
+    const indicatorOffColor: string = AppColors.MaastrichtBlue
+    const textColor: string = AppColors.MaastrichtBlue
 
-    return (
+    const compactChart: JSX.Element = 
         <View style={{width: '100%', paddingHorizontal: 15}}>
             <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', paddingBottom: 10, color: textColor}}>{'Workout Progress'}</Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10}}>
@@ -48,12 +52,12 @@ export default function ProgressChart(): JSX.Element {
                 { workoutIndicatorColumns.map((column: WorkoutIndicatorModel[], columnIndex: number) => 
                     <View key={columnIndex}>
                         { column.map((indicator: WorkoutIndicatorModel, rowIndex: number) => {
-                            let indicatorColor: string = indicator.indicatorFlag ? indicatorOnColor : indicatorOffColor
-                            let rowIsLastRow: boolean = rowIndex == chartRows - 1
-                            let connectsTwoFlags: boolean = !rowIsLastRow && column[rowIndex].indicatorFlag && column[rowIndex + 1].indicatorFlag
-                            let connectorColor: string = connectsTwoFlags ? indicatorOnColor : 'transparent'
-                            let indicatorKey: number = rowIndex
-                            let connectorKey: number = (rowIndex + 1) * 2
+                            const indicatorColor: string = indicator.indicatorFlag ? indicatorOnColor : indicatorOffColor
+                            const rowIsLastRow: boolean = rowIndex == chartRows - 1
+                            const connectsTwoFlags: boolean = !rowIsLastRow && column[rowIndex].indicatorFlag && column[rowIndex + 1].indicatorFlag
+                            const connectorColor: string = connectsTwoFlags ? indicatorOnColor : 'transparent'
+                            const indicatorKey: number = rowIndex
+                            const connectorKey: string = 'c' + rowIndex
                             return (
                                 <>
                                     <View key={indicatorKey} style={{backgroundColor: indicatorColor, width: 10, height: 10, marginHorizontal: 5, borderRadius: 2}} />
@@ -65,12 +69,58 @@ export default function ProgressChart(): JSX.Element {
                 )}
             </View>
         </View>
-    )
+
+    const weekDayLabels: string[] = ['Mon', 'Wed', 'Fri', 'Sun']
+
+    const normalChart: JSX.Element = 
+        <View style={{width: '100%', paddingHorizontal: 15}}>
+            <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', paddingBottom: 10, color: textColor}}>{'Workout Progress'}</Text>
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10, paddingLeft: 30}}>
+                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{startDateLabel}</Text>
+                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{middleDateLabel}</Text>
+                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{endDateLabel}</Text>
+            </View>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
+                <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
+                    { weekDayLabels.map((day: string, dayIndex: number) =>
+                        <View key={'t' + dayIndex} style={{width: 25, height: 15, marginBottom: 5, marginRight: 10}}>
+                            <Text style={{fontSize: 12, textAlign: 'right'}}>{day}</Text>
+                        </View>
+                    )}
+                </View>
+                { workoutIndicatorColumns.map((column: WorkoutIndicatorModel[], columnIndex: number) => 
+                    <View key={columnIndex}>
+                        { column.map((indicator: WorkoutIndicatorModel, rowIndex: number) => {
+                            const indicatorColor: string = indicator.indicatorFlag ? indicatorOnColor : indicatorOffColor
+                            const indicatorKey: number = rowIndex
+                            return <View key={indicatorKey} style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorColor, marginHorizontal: 5, marginBottom: 5}]} />
+                        })}
+                    </View>
+                )}
+            </View>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around', paddingTop: 10, paddingLeft: 30}}>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={{paddingRight: 5}}>{'Workout Completed:'}</Text>
+                    <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOnColor, marginTop: 1}]}/>
+                </View>
+                <View style={{flexDirection: 'row'}}>
+                    <Text style={{paddingRight: 5}}>{'Workout Not Completed:'}</Text>
+                    <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOffColor, marginTop: 1}]}/>
+                </View>
+            </View>
+        </View>
+
+    return props.chartType == 'compact' ? compactChart : normalChart
 }
 
 const reusedStyles = StyleSheet.create({
     dateLabel: {
         fontWeight: '400',
         fontSize: 12
+    },
+    normalChartIndicator: {
+        width: 15,
+        height: 15,
+        borderRadius: 2
     }
 })
