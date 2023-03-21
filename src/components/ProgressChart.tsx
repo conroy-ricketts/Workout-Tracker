@@ -44,9 +44,9 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
         <View style={{width: '100%', paddingHorizontal: 15}}>
             <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', paddingBottom: 10, color: textColor}}>{'Workout Progress'}</Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10}}>
-                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{startDateLabel}</Text>
-                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{middleDateLabel}</Text>
-                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{endDateLabel}</Text>
+                <Text style={[reusedStyles.textLabel, {color: textColor}]}>{startDateLabel}</Text>
+                <Text style={[reusedStyles.textLabel, {color: textColor}]}>{middleDateLabel}</Text>
+                <Text style={[reusedStyles.textLabel, {color: textColor}]}>{endDateLabel}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
                 { workoutIndicatorColumns.map((column: WorkoutIndicatorModel[], columnIndex: number) => 
@@ -76,15 +76,15 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
         <View style={{width: '100%', paddingHorizontal: 15}}>
             <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', paddingBottom: 10, color: textColor}}>{'Workout Progress'}</Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10, paddingLeft: 30}}>
-                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{startDateLabel}</Text>
-                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{middleDateLabel}</Text>
-                <Text style={[reusedStyles.dateLabel, {color: textColor}]}>{endDateLabel}</Text>
+                <Text style={[reusedStyles.textLabel, {color: textColor}]}>{startDateLabel}</Text>
+                <Text style={[reusedStyles.textLabel, {color: textColor}]}>{middleDateLabel}</Text>
+                <Text style={[reusedStyles.textLabel, {color: textColor}]}>{endDateLabel}</Text>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
                 <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
                     { weekDayLabels.map((day: string, dayIndex: number) =>
                         <View key={'t' + dayIndex} style={{width: 25, height: 15, marginBottom: 5, marginRight: 10}}>
-                            <Text style={{fontSize: 12, textAlign: 'right'}}>{day}</Text>
+                            <Text style={[reusedStyles.textLabel, {color: textColor, textAlign: 'right'}]}>{day}</Text>
                         </View>
                     )}
                 </View>
@@ -100,11 +100,11 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-around', paddingTop: 10, paddingLeft: 30}}>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{paddingRight: 5}}>{'Workout Completed:'}</Text>
+                    <Text style={[reusedStyles.textLabel, {color: textColor, paddingRight: 5}]}>{'Workout Completed:'}</Text>
                     <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOnColor, marginTop: 1}]}/>
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{paddingRight: 5}}>{'Workout Not Completed:'}</Text>
+                    <Text style={[reusedStyles.textLabel, {color: textColor, paddingRight: 5}]}>{'Workout Not Completed:'}</Text>
                     <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOffColor, marginTop: 1}]}/>
                 </View>
             </View>
@@ -114,7 +114,7 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
 }
 
 const reusedStyles = StyleSheet.create({
-    dateLabel: {
+    textLabel: {
         fontWeight: '400',
         fontSize: 12
     },
