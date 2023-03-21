@@ -100,11 +100,11 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-around', paddingTop: 10, paddingLeft: 30}}>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={[reusedStyles.textLabel, {color: textColor, paddingRight: 5}]}>{'Workout Completed:'}</Text>
+                    <Text style={[reusedStyles.textLabel, {color: textColor, paddingRight: 5}]}>{'Completed:'}</Text>
                     <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOnColor, marginTop: 1}]}/>
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={[reusedStyles.textLabel, {color: textColor, paddingRight: 5}]}>{'Workout Not Completed:'}</Text>
+                    <Text style={[reusedStyles.textLabel, {color: textColor, paddingRight: 5}]}>{'Not Completed:'}</Text>
                     <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOffColor, marginTop: 1}]}/>
                 </View>
             </View>
