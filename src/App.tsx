@@ -1,16 +1,19 @@
-import React from 'react'
-import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
-import GetStartedButton from './Components/GetStartedButton'
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import Navbar from './components/Navbar'
+
+
 
 export default function App(): JSX.Element {
-  return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <StatusBar style="auto" />
-    </View>
-  )
+    return (
+        <NavigationContainer>
+            <Navbar />
+            <StatusBar style="auto" />
+        </NavigationContainer>
+    )
 }
 
 
@@ -24,3 +27,5 @@ const styles = StyleSheet.create({
 })
 
 registerRootComponent(App)
+
+
