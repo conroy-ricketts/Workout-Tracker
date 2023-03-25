@@ -1,39 +1,34 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { AppColors } from '../resources/AppColors'
 
 type RectButtonProps ={
-  text: string;
-};
+  text: string
+}
 
-const FullWidthRectButton = (props: RectButtonProps) => {
+export default function FullWidthRectButton(props: RectButtonProps): JSX.Element {
     return (
-      <TouchableOpacity
-        style={styles.TouchableOpacity}
-      >
-        <Text style={styles.text}>{props.text}</Text>
-      </TouchableOpacity>
-    );
-  };
+        <TouchableOpacity style={styles.TouchableOpacity}>
+            <Text style={styles.text}>{props.text}</Text>
+        </TouchableOpacity>
+    )
+}
 
-  //For a responsive width use Dimensions.get('window').width * 0.8,
-
-  const styles = StyleSheet.create({
-      TouchableOpacity:{
-      backgroundColor: '#5BC0BE',
-      padding: 15,
-      borderRadius: 5,
-      justifyContent: 'center',
-      width: 358,
-      height: 64,
+// TODO: For a responsive width (on the TouchableOpacity style), import Dimensions from react-native, and use Dimensions.get('window').width * 0.8.
+const styles = StyleSheet.create({
+    TouchableOpacity:{
+        backgroundColor: AppColors.SeaSerpent,
+        padding: 15,
+        borderRadius: 5,
+        justifyContent: 'center',
+        width: 358,
+        height: 64,
     },
 
     text:{
-      color: 'black',
-      fontSize: 18,
-      fontWeight: 'bold',
-      textAlign: 'center'
+        color: AppColors.MaastrichtBlue,
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
-
-  })
-
-  export default FullWidthRectButton;
+})
