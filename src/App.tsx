@@ -1,14 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
+import Button from './Components/SmallButton'
 import React from 'react'
-import Navbar from './components/Navbar'
+import Navbar from './Components/Navbar'
 
 export default function App(): JSX.Element {
     return (
         <NavigationContainer>
             <Navbar />
             <StatusBar style="auto" />
+            <Button title='Next' onPress={() => 'something'}></Button>
         </NavigationContainer>
     )
 }
