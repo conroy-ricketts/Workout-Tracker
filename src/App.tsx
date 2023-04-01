@@ -8,7 +8,7 @@ export default function App(): JSX.Element {
     return (
         <NavigationContainer>
             <Navbar />
-            <StatusBar style="auto" />
+            <StatusBar style="light" />
         </NavigationContainer>
     )
 }

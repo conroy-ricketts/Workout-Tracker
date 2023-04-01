@@ -21,18 +21,21 @@ export default function TrackerScreen(): JSX.Element {
                 <View style={{paddingTop: 30, alignSelf: 'center', }}>
                     <FullWidthRectButton 
                         text='Complete a Workout'
+                        backgroundColor={AppColors.SeaSerpent}
                         onPress={() => {}} 
                     />
                 </View>
                 <View style={{paddingTop: 30, alignSelf: 'center', }}>
                     <FullWidthRectButton 
                         text='Retake The Survey' 
+                        backgroundColor={AppColors.White}
                         onPress={() => {}}
                     />
                 </View>
                 <View style={{paddingTop: 30, alignSelf: 'center', }}>
                     <FullWidthRectButton 
                         text='Toggle Chart Type' 
+                        backgroundColor={AppColors.SeaSerpent}
                         onPress={() => setPogressChartType(progressChartType == 'compact' ? 'normal' : 'compact')}
                     />
                 </View>
