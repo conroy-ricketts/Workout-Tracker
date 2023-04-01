@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Text, View, StyleSheet,StatusBar, Dimensions, Animated} from 'react-native'
 const {width,height} = Dimensions.get('window')
 
+<<<<<<< HEAD
 const items = [{
   id: 1,
   image: require('../../../assets/1.jpg'),
@@ -212,3 +213,12 @@ const styles = StyleSheet.create({
   }
 })
 export default OnboardingScreen
+=======
+export default function OnboardingScreen(): JSX.Element {
+    return (
+        <View>
+            <Text>Hello World!</Text>
+        </View>
+    )
+}
+>>>>>>> 1c46632dca4addae7c9f14802613c0cdc7c6191e
