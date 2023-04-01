@@ -5,7 +5,7 @@ export function workoutSetUsesReps(
 }
 
 export function convertSecondsToTimeFormat(seconds: number): string {
-    let date = new Date(0)
+    const date = new Date(0)
     date.setSeconds(seconds)
     return date.toISOString().substring(14, 19)
 }

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { AppColors } from '../../resources/AppColors'
 import { convertSecondsToTimeFormat, getFakeWorkoutPlan, workoutSetUsesReps } from '../../helpers/WorkoutPlanDataHelper'
+import { AppColors } from '../../resources/AppColors'
 
 export default function WorkoutPlanScreen(): JSX.Element {
     // TODO: Use real data once backend is finished.
@@ -13,7 +13,7 @@ export default function WorkoutPlanScreen(): JSX.Element {
             <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', color: AppColors.White, paddingBottom: 20}}>{'Your Optimal Workout'}</Text>
             <ScrollView>
                 { workoutPlan.map((workout: WorkoutModel, workoutIndex: number) => {
-                    let workoutUsesReps: boolean = workoutSetUsesReps(workout.sets[0])
+                    const workoutUsesReps: boolean = workoutSetUsesReps(workout.sets[0])
 
                     return (
                         <View key={'i' + workoutIndex}>
@@ -33,19 +33,19 @@ export default function WorkoutPlanScreen(): JSX.Element {
                             }
                             { workout.sets.map((set: WorkoutSetWithReps | WorkoutSetWithTime, setIndex:number) =>
                                 <View key={'j' + setIndex}>
-                                { workoutUsesReps ? 
-                                    <View style={reusedStyles.gridRow}>
-                                        <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{setIndex + 1}</Text>
-                                        <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{(set as WorkoutSetWithReps).weight}</Text>
-                                        <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{(set as WorkoutSetWithReps).reps}</Text>
-                                    </View> : 
-                                    <View style={reusedStyles.gridRow}>
-                                        <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{setIndex + 1}</Text>
-                                        <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{convertSecondsToTimeFormat((set as WorkoutSetWithTime).seconds)}</Text>
-                                        {/* Leaving this text blank for a fake column. */}
-                                        <Text style={{width: 50}}></Text>
-                                    </View>
-                                }
+                                    { workoutUsesReps ? 
+                                        <View style={reusedStyles.gridRow}>
+                                            <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{setIndex + 1}</Text>
+                                            <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{(set as WorkoutSetWithReps).weight}</Text>
+                                            <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{(set as WorkoutSetWithReps).reps}</Text>
+                                        </View> : 
+                                        <View style={reusedStyles.gridRow}>
+                                            <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{setIndex + 1}</Text>
+                                            <Text style={[reusedStyles.normalText, reusedStyles.gridTextBlock, {color: AppColors.White}]}>{convertSecondsToTimeFormat((set as WorkoutSetWithTime).seconds)}</Text>
+                                            {/* Leaving this text blank for a fake column. */}
+                                            <Text style={{width: 50}}></Text>
+                                        </View>
+                                    }
                                 </View>
                             )}
                         </View>

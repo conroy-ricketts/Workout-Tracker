@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import ProgressChart from '../../components/ProgressChart'
-import { AppColors } from '../../resources/AppColors'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FullWidthRectButton from '../../components/FullWidthRectButton'
+import ProgressChart from '../../components/ProgressChart'
+import { AppColors } from '../../resources/AppColors'
 
 export default function TrackerScreen(): JSX.Element {
     const [progressChartType, setPogressChartType] = useState<'compact' | 'normal'>('compact')
@@ -18,21 +18,21 @@ export default function TrackerScreen(): JSX.Element {
             </View>
             <View style={{paddingBottom: 40}}>
                 {/* TODO: We need to replace these buttons with Tran's button when she finishes that. */}
-                <View style={{paddingTop: 30, alignSelf: 'center', }}>
+                <View style={reusedStyles.buttonView}>
                     <FullWidthRectButton 
                         text='Complete a Workout'
                         backgroundColor={AppColors.SeaSerpent}
                         onPress={() => {}} 
                     />
                 </View>
-                <View style={{paddingTop: 30, alignSelf: 'center', }}>
+                <View style={reusedStyles.buttonView}>
                     <FullWidthRectButton 
                         text='Retake The Survey' 
                         backgroundColor={AppColors.White}
                         onPress={() => {}}
                     />
                 </View>
-                <View style={{paddingTop: 30, alignSelf: 'center', }}>
+                <View style={reusedStyles.buttonView}>
                     <FullWidthRectButton 
                         text='Toggle Chart Type' 
                         backgroundColor={AppColors.SeaSerpent}
@@ -44,5 +44,9 @@ export default function TrackerScreen(): JSX.Element {
     )
 }
 
-const styles = StyleSheet.create({
+const reusedStyles = StyleSheet.create({
+    buttonView: {
+        paddingTop: 30, 
+        alignSelf: 'center'
+    }
 })
