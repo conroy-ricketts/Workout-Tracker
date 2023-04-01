@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { Dimensions, Image, StyleSheet } from 'react-native'
-import SettingsScreen from '../screens/core/SettingsScreen'
+import WorkoutPlanScreen from '../screens/core/WorkoutPlanScreen'
 import StatsScreen from '../screens/core/StatsScreen'
 import TrackerScreen from '../screens/core/TrackerScreen'
 
@@ -21,7 +21,7 @@ const TrackerTabOptions = {
     )
 }
 
-const SettingsTabOptions = {
+const WorkoutTabOptions = {
     tabBarIcon: ({ focused }: TabBarIconProps) => (
         focused ?
             <Image source={require('../../assets/NavBarIcons/SelectedProfile.png')} style={styles.icon} /> :
@@ -52,7 +52,7 @@ export default function Navbar(): JSX.Element {
         <Tab.Navigator screenOptions={navBarScreenOptions}>
             <Tab.Screen name="StatsScreen" component={StatsScreen} options={StatsTabOptions} />
             <Tab.Screen name="TrackerScreen" component={TrackerScreen} options={TrackerTabOptions} />
-            <Tab.Screen name="SettingsScreen" component={SettingsScreen} options={SettingsTabOptions} />
+            <Tab.Screen name="WorkoutPlanScreen" component={WorkoutPlanScreen} options={WorkoutTabOptions} />
         </Tab.Navigator>
     )
 }

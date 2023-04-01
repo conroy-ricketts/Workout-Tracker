@@ -1,18 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
-export default function TrackerScreen(): JSX.Element {
+export default function StatsScreen(): JSX.Element {
     return (
-        <View style={styles.container}>
-            <Text>Stats Screen!</Text>
-        </View>
+        <SafeAreaView>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
 })

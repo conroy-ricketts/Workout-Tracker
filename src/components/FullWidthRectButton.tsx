@@ -2,13 +2,14 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import { AppColors } from '../resources/AppColors'
 
-type RectButtonProps ={
-  text: string
+type RectButtonProps = {
+    text: string,
+    onPress: () => void
 }
 
 export default function FullWidthRectButton(props: RectButtonProps): JSX.Element {
     return (
-        <TouchableOpacity style={styles.TouchableOpacity}>
+        <TouchableOpacity style={styles.TouchableOpacity} onPress={props.onPress}>
             <Text style={styles.text}>{props.text}</Text>
         </TouchableOpacity>
     )
@@ -24,7 +25,6 @@ const styles = StyleSheet.create({
         width: 358,
         height: 64,
     },
-
     text:{
         color: AppColors.MaastrichtBlue,
         fontSize: 18,
