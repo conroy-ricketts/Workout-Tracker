@@ -2,12 +2,13 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
 import { registerRootComponent } from 'expo'
+import Question1 from './screens/survey/1Gender'
+
 
 export default function App(): JSX.Element {
   return (
     <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <StatusBar style="auto" />
+   <Question1 />
     </View>
   )
 }
