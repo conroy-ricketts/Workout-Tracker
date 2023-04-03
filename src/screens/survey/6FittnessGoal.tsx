@@ -3,8 +3,42 @@ import { Text, View } from 'react-native';
 import SurveyBackground from './BackgroundComponent';
 import Indicator from './IndicatorComponent';
 import Choices from '../../components/ChoicesButton';
+import SmallWidthRoundedButton from '../../components/SmallWidthRoundedButton';
+import BackButton from '../../components/BackButton';
+import { Dimensions } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-export default function Question6(): JSX.Element {
+const screenHeight = Dimensions.get('screen').height;
+type RootStackParamList = {
+    Question5: undefined;
+    Question6: undefined;
+    Question7: undefined;
+  };
+  type Question5ScreenNavigationProp = StackNavigationProp<
+    RootStackParamList,
+    'Question5'
+  >;
+  type Question6ScreenNavigationProp = StackNavigationProp<
+    RootStackParamList,
+    'Question6'
+  >;
+  
+  type Question7ScreenNavigationProp = StackNavigationProp<
+    RootStackParamList,
+    'Question7'
+  >;
+  type Question5Props = {
+    navigation: Question5ScreenNavigationProp;
+  };
+  type Question6Props = {
+    navigation: Question6ScreenNavigationProp;
+  };
+  
+  type Question7Props = {
+    navigation: Question7ScreenNavigationProp;
+  };
+  type Question6NavigationProp = StackNavigationProp<RootStackParamList, 'Question6'>;
+export default function Question6({ navigation }: { navigation: Question6NavigationProp }) {
   const images = [
     require('../../../assets/IndicatorImages/Indicator1.png'),
     require('../../../assets/IndicatorImages/Indicator2.png'),
@@ -85,9 +119,9 @@ export default function Question6(): JSX.Element {
           activeImage={activeImage}
         />
       </View>
-      <View style={{ marginTop: 5, paddingHorizontal: 45 }}>
+      <View style={{ marginTop: 0, paddingHorizontal: 45 }}>
         <Text style={{ fontSize: 25, fontWeight: '600', color:'white', textAlign: 'center', marginBottom: 15 }}>What’s your top fitness goal?</Text>
-        <Text style={{ fontSize: 15, fontWeight: '400',color:'white', textAlign: 'center', marginBottom: 0}}>This helps us curate your personalized workout plan</Text>
+        <Text style={{ fontSize: 15, fontWeight: '400',color:'white', textAlign: 'center', marginBottom: 10}}>This helps us curate your personalized workout plan</Text>
         <Choices
           title="Lose weight"
           onPress={handleChoice1Press}
@@ -118,6 +152,12 @@ export default function Question6(): JSX.Element {
           onPress={handleChoice6Press}
           isSelected={Choice6Selected}
         />
+        <View style={{position: 'absolute', bottom: -97, right: 30 }}>
+          <SmallWidthRoundedButton title="Next" onPress={() => navigation.navigate('Question7')} />
+        </View>
+        <View style={{position: 'absolute', top: screenHeight<900? -75:-90, right: 375 }}>
+          <BackButton onPress={() => navigation.navigate('Question5')}/>
+        </View>
       </View>
     </SurveyBackground>
   );

@@ -34,7 +34,7 @@ const Indicator: React.FC<IndicatorProps> = ({ activeIndex, count, images, activ
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    top: -300, 
+    top: -350, 
     left: 50, 
     right: 0,
   },
