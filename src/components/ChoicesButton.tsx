@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
     buttonTextSelected: {
         color: '#000000',
     },
-});
+})

@@ -5,18 +5,18 @@ import { registerRootComponent } from 'expo'
 import SurveyNavigator from './screens/survey/SurveyNavigator'
 
 export default function App(): JSX.Element {
-  return (
-    <SurveyNavigator/>
-  )
+    return (
+        <SurveyNavigator/>
+    )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 })
 
 registerRootComponent(App)
