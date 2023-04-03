@@ -61,7 +61,7 @@ export default function Question1(): JSX.Element {
         />
       </View>
       <View style={{ marginTop: 0, paddingHorizontal: 45 }}>
-        <Text style={{ fontSize: 40, fontWeight: '600', color:'white', textAlign: 'center', marginBottom: 20 }}>Tell Us About Yourself!</Text>
+        <Text style={{ fontSize: 30, fontWeight: '600', color:'white', textAlign: 'center', marginBottom: 20 }}>Tell Us About Yourself!</Text>
         <Text style={{ fontSize: 15, fontWeight: '400',color:'white', textAlign: 'center', marginBottom: 20 }}>To give you a better experience, what gender do you identify with?</Text>
         <Choices
           title="Female"
