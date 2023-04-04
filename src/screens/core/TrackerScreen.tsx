@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import FullWidthRectButton from '../../components/FullWidthRectButton'
-import ProgressChart from '../../components/ProgressChart'
+import FullWidthRectButton from '../../Components/FullWidthRectButton'
+import ProgressChart from '../../Components/ProgressChart'
 import { AppColors } from '../../resources/AppColors'
 
 export default function TrackerScreen(): JSX.Element {

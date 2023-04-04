@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { registerRootComponent } from 'expo'
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import Navbar from './components/Navbar'
+import Navbar from './Components/Navbar'
 
 export default function App(): JSX.Element {
     return (
@@ -10,6 +10,7 @@ export default function App(): JSX.Element {
             <Navbar />
             <StatusBar style="light" />
         </NavigationContainer>
+        
     )
 }
 
