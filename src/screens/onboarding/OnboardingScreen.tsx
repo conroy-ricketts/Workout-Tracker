@@ -147,8 +147,8 @@ const styles = StyleSheet.create({
         height,
     },
     image:{
-        width: width < 420 ? 412:width,
-        height: height < 900 ? 740:height,
+        width: width,
+        height: height ,
         zIndex: 0
     },
     titleContainer:{
@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
     indicatorContainer:{
         width: (width * .25),
         height: 4,
-        bottom: height < 900 ? (height * 0.32 - 120):(height * 0.32 - 180),
+        bottom: (height * 0.32 - 180),
         zIndex: 3,
         resizeMode: 'contain'
 
