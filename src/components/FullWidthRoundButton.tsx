@@ -18,7 +18,6 @@ export default function RoundButton(props: RoundButtonProps): JSX.Element {
 
 const styles = StyleSheet.create({
     touchableOpacity: {
-        padding: 15,
         borderRadius: 48, 
         justifyContent: 'center',
         alignItems: 'center',
