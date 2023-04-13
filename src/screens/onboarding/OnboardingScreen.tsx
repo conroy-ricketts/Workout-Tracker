@@ -1,29 +1,34 @@
+import { useFonts } from 'expo-font'
 import React from 'react'
-import { Image, Text, View, StyleSheet,StatusBar, Dimensions, Animated} from 'react-native'
-const {width,height} = Dimensions.get('window')
+import { Animated, Dimensions, Image, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { AppColors } from '../../resources/AppColors'
+
+const { width, height } = Dimensions.get('window')
 
 const items = [{
     id: 1,
-    image: require('../../../assets/1.jpg'),
-    indicator:require('../../../assets/Indicator.png'),
+    image: require('../../../assets/onboarding/Image1.jpg'),
+    indicator:require('../../../assets/onboarding/Indicator1.png'),
     title: 'Find the right\n workout for what you need',
     description: 'Fit 4 U is the ideal program for creating workouts tailored to your specific needs, whether you want to lose weight, gain strength, or simply keep active. Train up to seven days each week. '
 },{
     id: 2,
-    image: require('../../../assets/2.jpg'),
-    indicator:require('../../../assets/Indicator2.png'),
+    image: require('../../../assets/onboarding/Image2.jpg'),
+    indicator:require('../../../assets/onboarding/Indicator2.png'),
     title: 'Unlimited support to stay\n on track',
     description:'Fit 4 U provides daily check-ins as well as a memory album of your progress to keep you motivated, guide your workout, and make any changes needed based on your work schedule or travel.'
 },{
     id: 3,
-    image: require('../../../assets/3.jpg'),
-    indicator:require('../../../assets/Indicator3.png'),
+    image: require('../../../assets/onboarding/Image3.jpg'),
+    indicator:require('../../../assets/onboarding/Indicator3.png'),
     title: 'Your own custom designed\n workout plan',
     description:'Your designed workouts will be split into certain amount of days\n you plan to exercise per week based on your schedule\n and progress.'
 }]
 
-const OnboardingScreen = () => {
+export default function OnboardingScreen(): JSX.Element {
     const scrollAnimation = React.useRef(new Animated.Value(0)).current
+    useFonts({'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')})
+
     return (
         <View style = {styles.screen}>
             <StatusBar hidden />
@@ -58,7 +63,7 @@ const OnboardingScreen = () => {
                                 resizeMode='stretch'
                             />
                             <View style={styles.fixedImageContainer}>
-                                <Image source={require('../../../assets/TextBackground.png')} style={styles.fixedImage} />
+                                <Image source={require('../../../assets/onboarding/TextBackground.png')} style={styles.fixedImage} />
                             </View>
                             <Animated.View 
                                 style={[
@@ -127,7 +132,9 @@ const OnboardingScreen = () => {
                 }}
             />
             <View style={styles.appTitleContainer}>
-                <Image source={require('../../../assets/Fit-4-U.png')} style={styles.appTitle} />
+                <Text style={{textAlign: 'center', fontStyle: 'normal', fontFamily: 'Michroma-Regular', fontWeight: '400', fontSize: 48, color: AppColors.MaastrichtBlue}}>
+                    {'Fit 4 U'}
+                </Text>
             </View>
         </View>
     
@@ -147,8 +154,8 @@ const styles = StyleSheet.create({
         height,
     },
     image:{
-        width: width < 420 ? 412:width,
-        height: height < 900 ? 740:height,
+        width: width,
+        height: height ,
         zIndex: 0
     },
     titleContainer:{
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize: height < 900 ? 25:30,
-        color:'#ffffff',
+        color: AppColors.White,
         textAlign: 'center',
         lineHeight: height < 900 ? 30:45,
         textShadowOffset: { width: 0, height: 4 },
@@ -172,7 +179,7 @@ const styles = StyleSheet.create({
     },
     description:{
         fontSize: 11,
-        color:'#ffffff',
+        color: AppColors.White,
         textAlign: 'center',
         fontWeight: '400',
         lineHeight: 18,
@@ -205,10 +212,9 @@ const styles = StyleSheet.create({
     indicatorContainer:{
         width: (width * .25),
         height: 4,
-        bottom: height < 900 ? (height * 0.32 - 120):(height * 0.32 - 180),
+        bottom: (height * 0.32 - 180),
         zIndex: 3,
         resizeMode: 'contain'
 
     }
 })
-export default OnboardingScreen
