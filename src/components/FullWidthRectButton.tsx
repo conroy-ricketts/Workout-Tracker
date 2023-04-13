@@ -19,7 +19,6 @@ export default function FullWidthRectButton(props: RectButtonProps): JSX.Element
 // TODO: For a responsive width (on the TouchableOpacity style), import Dimensions from react-native, and use Dimensions.get('window').width * 0.8.
 const styles = StyleSheet.create({
     TouchableOpacity: {
-        padding: 15,
         borderRadius: 5,
         justifyContent: 'center',
         width: 358,
