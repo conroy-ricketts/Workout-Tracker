@@ -30,3 +30,11 @@ export function generateDateRangeForStartDate(startDate: Date, chartRows: number
         endDate: endDate
     }
 }
+
+export function getTotalNumberOfWorkoutsCompleted(workoutData: WorkoutIndicatorModel[]) {
+    let numberOfWorkoutsCompleted = 0
+    workoutData.forEach((workoutIndicatorModel) => {
+        if (workoutIndicatorModel.indicatorFlag) numberOfWorkoutsCompleted++
+    })
+    return numberOfWorkoutsCompleted
+}

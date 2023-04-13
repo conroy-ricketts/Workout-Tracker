@@ -1,7 +1,7 @@
 import moment from 'moment'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { generateDateRangeForStartDate, generateMockData } from '../helpers/ProgressChartDataHelper'
+import { generateDateRangeForStartDate, generateMockData, getTotalNumberOfWorkoutsCompleted } from '../helpers/ProgressChartDataHelper'
 import { AppColors } from '../resources/AppColors'
 
 type ChartProps = {
@@ -35,14 +35,15 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
         workoutIndicatorColumns.push(workoutIndicators)
     }
 
-    // TODO: We need to vary these colors based off of the user's theme (light theme or dark theme)
     const indicatorOnColor: string = AppColors.SeaSerpent
-    const indicatorOffColor: string = AppColors.MaastrichtBlue
-    const textColor: string = AppColors.MaastrichtBlue
+    const indicatorOffColor: string = AppColors.White
+    const textColor: string = AppColors.White
+
+    const numberOfWorkoutsCompleted = getTotalNumberOfWorkoutsCompleted(mockData)
 
     const compactChart: JSX.Element = 
         <View style={{width: '100%', paddingHorizontal: 15}}>
-            <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', paddingBottom: 10, color: textColor}}>{'Workout Progress'}</Text>
+            <Text style={[reusedStyles.normalText, {alignSelf: 'center', paddingBottom: 10, color: textColor}]}>{'Workout Progress'}</Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10}}>
                 <Text style={[reusedStyles.textLabel, {color: textColor}]}>{startDateLabel}</Text>
                 <Text style={[reusedStyles.textLabel, {color: textColor}]}>{middleDateLabel}</Text>
@@ -68,13 +69,14 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
                     </View>
                 )}
             </View>
+            <Text style={[reusedStyles.normalText, {alignSelf: 'center', paddingTop: 30, color: textColor}]}>{numberOfWorkoutsCompleted + ' workouts completed!'}</Text>
         </View>
 
     const weekDayLabels: string[] = ['Mon', 'Wed', 'Fri', 'Sun']
 
     const normalChart: JSX.Element = 
         <View style={{width: '100%', paddingHorizontal: 15}}>
-            <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', paddingBottom: 10, color: textColor}}>{'Workout Progress'}</Text>
+            <Text style={[reusedStyles.normalText, {alignSelf: 'center', paddingBottom: 10, color: textColor}]}>{'Workout Progress'}</Text>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10, paddingLeft: 30}}>
                 <Text style={[reusedStyles.textLabel, {color: textColor}]}>{startDateLabel}</Text>
                 <Text style={[reusedStyles.textLabel, {color: textColor}]}>{middleDateLabel}</Text>
@@ -108,12 +110,17 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
                     <View style={[reusedStyles.normalChartIndicator, {backgroundColor: indicatorOffColor, marginTop: 1}]}/>
                 </View>
             </View>
+            <Text style={[reusedStyles.normalText, {alignSelf: 'center', paddingTop: 30, color: textColor}]}>{numberOfWorkoutsCompleted + ' workouts completed!'}</Text>
         </View>
 
     return props.chartType == 'compact' ? compactChart : normalChart
 }
 
 const reusedStyles = StyleSheet.create({
+    normalText: {
+        fontWeight: '700', 
+        fontSize: 20
+    },
     textLabel: {
         fontWeight: '400',
         fontSize: 12
