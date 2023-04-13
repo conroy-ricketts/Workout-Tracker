@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { Dimensions, Image, StyleSheet } from 'react-native'
-import StatsScreen from '../screens/core/StatsScreen'
 import TrackerScreen from '../screens/core/TrackerScreen'
 import WorkoutPlanScreen from '../screens/core/WorkoutPlanScreen'
 import { AppColors } from '../resources/AppColors'
+import StatsNavigator from './StatsNavigation'
 
 const { width, height } = Dimensions.get('window')
 const Tab = createBottomTabNavigator()
@@ -52,10 +52,11 @@ export default function Navbar(): JSX.Element {
         <Tab.Navigator screenOptions={navBarScreenOptions}>
             <Tab.Screen name="WorkoutPlanScreen" component={WorkoutPlanScreen} options={WorkoutTabOptions} />
             <Tab.Screen name="TrackerScreen" component={TrackerScreen} options={TrackerTabOptions} />
-            <Tab.Screen name="StatsScreen" component={StatsScreen} options={StatsTabOptions} />
+            <Tab.Screen name="Pic/StatsScreen" component={StatsNavigator} options={StatsTabOptions} />
         </Tab.Navigator>
     )
 }
+
 const styles = StyleSheet.create({
     icon: {
         height: height < 900 ? (48 *.85):48,
