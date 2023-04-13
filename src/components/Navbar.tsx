@@ -50,7 +50,7 @@ export type NavbarProps = {
     statsNavigator: JSX.Element;
   };
 
-  const Navbar = ({ statsNavigator }: NavbarProps) => {
+const Navbar = ({ statsNavigator }: NavbarProps) => {
     return (
         <Tab.Navigator screenOptions={navBarScreenOptions}>
             <Tab.Screen name="Pic/StatsScreen" component={StatsNavigator} options={StatsTabOptions} />
@@ -65,4 +65,4 @@ const styles = StyleSheet.create({
         width: width < 420 ? (48 * .85):48
     }
 })
-export default Navbar;
+export default Navbar
