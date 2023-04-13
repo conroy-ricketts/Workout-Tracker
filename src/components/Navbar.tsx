@@ -17,24 +17,24 @@ type TabBarIconProps = {
 const TrackerTabOptions = {
     tabBarIcon: ({ focused }: TabBarIconProps) => (
         focused ?
-            <Image source={require('../../assets/navbarIcons/SelectedHome.png')} style={styles.icon} /> :
-            <Image source={require('../../assets/navbarIcons/Home.png')} style={styles.icon} />
+            <Image source={require('../../assets/NavBarIcons/SelectedHome.png')} style={styles.icon} /> :
+            <Image source={require('../../assets/NavBarIcons/Home.png')} style={styles.icon} />
     )
 }
 
 const WorkoutTabOptions = {
     tabBarIcon: ({ focused }: TabBarIconProps) => (
         focused ?
-            <Image source={require('../../assets/navbarIcons/SelectedDumbbell.png')} style={styles.icon} /> :
-            <Image source={require('../../assets/navbarIcons/Dumbbell.png')} style={styles.icon}/>
+            <Image source={require('../../assets/NavBarIcons/SelectedDumbbell.png')} style={styles.icon} /> :
+            <Image source={require('../../assets/NavBarIcons/Dumbbell.png')} style={styles.icon}/>
     )
 }
 
 const StatsTabOptions = {
     tabBarIcon: ({ focused }: TabBarIconProps) => (
         focused ?
-            <Image source={require('../../assets/navbarIcons/SelectedStats.png')} style={styles.icon}/> :
-            <Image source={require('../../assets/navbarIcons/Stats.png')} style={styles.icon}/>
+            <Image source={require('../../assets/NavBarIcons/SelectedStats.png')} style={styles.icon}/> :
+            <Image source={require('../../assets/NavBarIcons/Stats.png')} style={styles.icon}/>
     )
 }
 
@@ -56,7 +56,6 @@ export type NavbarProps = {
             <Tab.Screen name="Pic/StatsScreen" component={StatsNavigator} options={StatsTabOptions} />
             <Tab.Screen name="TrackerScreen" component={TrackerScreen} options={TrackerTabOptions} />
             <Tab.Screen name="WorkoutPlanScreen" component={WorkoutPlanScreen} options={WorkoutTabOptions} />
-            <Tab.Screen name="TrackerScreen" component={TrackerScreen} options={TrackerTabOptions} />
         </Tab.Navigator>
     )
 }
