@@ -10,6 +10,9 @@ export default function App(): JSX.Element {
             <Navbar />
             <StatusBar style="light" />
         </NavigationContainer>
+        
+        // For survey screens:
+        // <SurveyNavigator/>
     )
 }
 
