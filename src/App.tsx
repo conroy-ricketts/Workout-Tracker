@@ -9,9 +9,12 @@ export default function App(): JSX.Element {
     return (
         <NavigationContainer>
             {/* I made a Navigator implemented into NavBar for the stats screen so user can switch from progress photos to stats screen */}
-            <Navbar statsNavigator={<StatsNavigator />}/>
+            <Navbar />
             <StatusBar style="light" />
         </NavigationContainer>
+        
+        // For survey screens:
+        // <SurveyNavigator/>
     )
 }
 
