@@ -51,4 +51,4 @@ Using our mobile app, users are able to get a a personalized workout plan based 
 5. Run the app on your preferred emulator or phone!
 
 ## What's next for Workout Tracker
-- We want to flesh out all of the other ideas that we had for our app but were unable to finish within the Kinght Hacks project daadline. These other ideas include: user accounts, user login, profile pictures, app themes, and exercise demonstration screens.
+- We want to flesh out all of the other ideas that we had for our app but were unable to finish within the Kinght Hacks project daadline. These other ideas include: user accounts, user login, profile pictures, app themes, more bias for the workout plan based on user answers, and exercise demonstration screens.
