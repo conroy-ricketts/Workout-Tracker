@@ -39,14 +39,14 @@ type RootStackParamList = {
   type Question2NavigationProp = StackNavigationProp<RootStackParamList, 'Question2'>;
 export default function Question2({ navigation }: { navigation: Question2NavigationProp }) {
     const images = [
-        require('../../../assets/indicatorImages/Indicator1.png'),
-        require('../../../assets/indicatorImages/Indicator2.png'),
-        require('../../../assets/indicatorImages/Indicator3.png'),
-        require('../../../assets/indicatorImages/Indicator4.png'),
-        require('../../../assets/indicatorImages/Indicator5.png'),
-        require('../../../assets/indicatorImages/Indicator6.png'),
-        require('../../../assets/indicatorImages/Indicator7.png'),
-        require('../../../assets/indicatorImages/Indicator8.png'),
+        require('../../../assets/IndicatorImages/Indicator1.png'),
+        require('../../../assets/IndicatorImages/Indicator2.png'),
+        require('../../../assets/IndicatorImages/Indicator3.png'),
+        require('../../../assets/IndicatorImages/Indicator4.png'),
+        require('../../../assets/IndicatorImages/Indicator5.png'),
+        require('../../../assets/IndicatorImages/Indicator6.png'),
+        require('../../../assets/IndicatorImages/Indicator7.png'),
+        require('../../../assets/IndicatorImages/Indicator8.png'),
     ]
     const activeImage = images[1]
 

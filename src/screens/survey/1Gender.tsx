@@ -10,7 +10,12 @@ import { StackNavigationProp } from '@react-navigation/stack'
 type RootStackParamList = {
   Question1: undefined;
   Question2: undefined;
+  OnboardingScreen: undefined;
 };
+type OnboardingScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'OnboardingScreen'
+>;
 
 type Question1ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -21,6 +26,9 @@ type Question2ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Question2'
 >;
+type OnboardingProps = {
+    navigation: OnboardingScreenNavigationProp;
+  };
 
 type Question1Props = {
   navigation: Question1ScreenNavigationProp;
@@ -33,14 +41,14 @@ type Question1NavigationProp = StackNavigationProp<RootStackParamList, 'Question
 
 export default function Question1({ navigation }: { navigation: Question1NavigationProp }) {
     const images = [
-        require('../../../assets/indicatorImages/Indicator1.png'),
-        require('../../../assets/indicatorImages/Indicator2.png'),
-        require('../../../assets/indicatorImages/Indicator3.png'),
-        require('../../../assets/indicatorImages/Indicator4.png'),
-        require('../../../assets/indicatorImages/Indicator5.png'),
-        require('../../../assets/indicatorImages/Indicator6.png'),
-        require('../../../assets/indicatorImages/Indicator7.png'),
-        require('../../../assets/indicatorImages/Indicator8.png'),
+        require('../../../assets/IndicatorImages/Indicator1.png'),
+        require('../../../assets/IndicatorImages/Indicator2.png'),
+        require('../../../assets/IndicatorImages/Indicator3.png'),
+        require('../../../assets/IndicatorImages/Indicator4.png'),
+        require('../../../assets/IndicatorImages/Indicator5.png'),
+        require('../../../assets/IndicatorImages/Indicator6.png'),
+        require('../../../assets/IndicatorImages/Indicator7.png'),
+        require('../../../assets/IndicatorImages/Indicator8.png'),
     ]
     const activeImage = images[0]
 
@@ -115,9 +123,8 @@ export default function Question1({ navigation }: { navigation: Question1Navigat
                 <View style={{position: 'absolute', bottom: -180, right: 30 }}>
                     <SmallWidthRoundedButton title="Next" onPress={() => navigation.navigate('Question2')} />
                 </View>
-                {/* Plan for this back button to go back to Onboarding screen once PR is approved */}
                 <View style={{position: 'absolute', top:-97, right: 375 }}>
-                    <BackButton onPress={() => console.log('Back button pressed')}/>
+                    <BackButton onPress={() => navigation.navigate('OnboardingScreen')}/>
                 </View>
             </View>
         </SurveyBackground>

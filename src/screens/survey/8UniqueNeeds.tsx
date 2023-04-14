@@ -9,6 +9,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 type RootStackParamList = {
     Question7: undefined;
     Question8: undefined;
+    TrackerScreen: undefined;
   };
   type Question7ScreenNavigationProp = StackNavigationProp<
     RootStackParamList,
@@ -19,6 +20,10 @@ type RootStackParamList = {
     RootStackParamList,
     'Question8'
   >;
+  type TrackerScreenNavigationProp = StackNavigationProp<
+    RootStackParamList,
+    'TrackerScreen'
+  >;
   type Question7Props = {
     navigation: Question7ScreenNavigationProp;
   };
@@ -26,17 +31,20 @@ type RootStackParamList = {
   type Question8Props = {
     navigation: Question8ScreenNavigationProp;
   };
+  type TrackerScreenProps = {
+    navigation: TrackerScreenNavigationProp;
+  };
   type Question8NavigationProp = StackNavigationProp<RootStackParamList, 'Question8'>;
 export default function Question8({ navigation }: { navigation: Question8NavigationProp }) {
     const images = [
-        require('../../../assets/indicatorImages/Indicator1.png'),
-        require('../../../assets/indicatorImages/Indicator2.png'),
-        require('../../../assets/indicatorImages/Indicator3.png'),
-        require('../../../assets/indicatorImages/Indicator4.png'),
-        require('../../../assets/indicatorImages/Indicator5.png'),
-        require('../../../assets/indicatorImages/Indicator6.png'),
-        require('../../../assets/indicatorImages/Indicator7.png'),
-        require('../../../assets/indicatorImages/Indicator8.png'),
+        require('../../../assets/IndicatorImages/Indicator1.png'),
+        require('../../../assets/IndicatorImages/Indicator2.png'),
+        require('../../../assets/IndicatorImages/Indicator3.png'),
+        require('../../../assets/IndicatorImages/Indicator4.png'),
+        require('../../../assets/IndicatorImages/Indicator5.png'),
+        require('../../../assets/IndicatorImages/Indicator6.png'),
+        require('../../../assets/IndicatorImages/Indicator7.png'),
+        require('../../../assets/IndicatorImages/Indicator8.png'),
     ]
     const activeImage = images[7]
 
@@ -106,9 +114,8 @@ export default function Question8({ navigation }: { navigation: Question8Navigat
                     onPress={handleChoice4Press}
                     isSelected={Choice4Selected}
                 />
-                {/* Planning for next button to go to home screen after Pull request is approved */}
                 <View style={{position: 'absolute', bottom: -197, right: 30 }}>
-                    <SmallWidthRoundedButton title="Next" onPress={() => console.log('Next button pressed')} />
+                    <SmallWidthRoundedButton title="Next" onPress={() => navigation.navigate('TrackerScreen')} />
                 </View>
                 <View style={{position: 'absolute', top: -80, right: 375 }}>
                     <BackButton onPress={() => navigation.navigate('Question7')}/>
