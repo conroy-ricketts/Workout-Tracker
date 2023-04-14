@@ -33,9 +33,9 @@ Using our mobile app, users are able to get a a personalized workout plan based 
 - Project scope. We were ambitous with our ideas for this project, and due to that we found ourselves not able to finish everything we envisioned. So, we got together as a team and made ciritical, thoughtful design decisions in order to determine what was absolutely necessary for both our minimal viable product and the end-user experience.
 
 ## What we learned
-- New tools and technologies. Most of our team was new to the tools and technologies that we used in the implementation of our app. So, this project was a great oppurtinity to broaden our skill sets, especially when it comes to React Native and TypeScript!
+- New tools and technologies. Most of our team was new to the tools and technologies that we used in the implementation of our app. So, this project was a great opportunity to broaden our skill sets, especially when it comes to React Native and TypeScript!
 - Teamwork. Each of our skills in working with a team were undoubtedly improved by us collaborating on this project. We had to learn to make compromises with each other, actively listen to each other's ideas, and strategize how to effectively design and implement our app.
-- Communication skills. This goes hand-and-hand with teamwork. In order to explain our ideas and visions for our project amongst ourselves, we definitely needed to improve our communication skills. Or project would be dead-in-the-water without that.
+- Communication skills. This goes hand-and-hand with teamwork. In order to explain our ideas and visions for our project amongst ourselves, we definitely needed to improve our communication skills. Our project would be dead-in-the-water without that.
 
 ## Our team
 - [Christina Nguyen](https://www.linkedin.com/in/christinanguyen8711/)
