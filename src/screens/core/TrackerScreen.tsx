@@ -5,8 +5,28 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import FullWidthRoundButton from '../../components/FullWidthRoundButton'
 import ProgressChart from '../../components/ProgressChart'
 import { AppColors } from '../../resources/AppColors'
+import { StackNavigationProp } from '@react-navigation/stack'
+type RootStackParamList = {
+    TrackerScreen: undefined;
+    Question1: undefined;
+  };
+  type TrackerScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'TrackerScreen'
+>;
+  type Question1ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Question1'
+>;
+type TrackerScreenProps = {
+    navigation: TrackerScreenNavigationProp;
+  };
+  type Question1Props = {
+    navigation: Question1ScreenNavigationProp;
+  };
+type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'TrackerScreen'>;
 
-export default function TrackerScreen(): JSX.Element {
+export default function TrackerScreen({ navigation }: { navigation: ScreenNavigationProp }) {
     const [progressChartType, setPogressChartType] = useState<'compact' | 'normal'>('compact')
     useFonts({'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')})
 
@@ -32,7 +52,7 @@ export default function TrackerScreen(): JSX.Element {
                         text='Retake The Survey' 
                         backgroundColor={AppColors.White}
                         textColor={AppColors.MaastrichtBlue}
-                        onPress={() => {}}
+                        onPress={() => navigation.navigate('Question1')}
                     />
                 </View>
                 <View style={reusedStyles.buttonView}>

@@ -1,7 +1,5 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { AppColors } from '../resources/AppColors'
-
 type RectButtonProps = {
     text: string,
     backgroundColor: string,
@@ -25,9 +23,16 @@ const styles = StyleSheet.create({
         height: 64,
     },
     text: {
-        color: AppColors.MaastrichtBlue,
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center'
+        fontStyle: 'normal',
+        fontWeight: '700',
+        fontSize: 24,
+        lineHeight: 36,
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        color: '#0B132B',
+        textShadowColor: 'rgba(0, 0, 0, 0.25)',
+        textShadowOffset: { width: 0, height: 4 },
+        textShadowRadius: 4,
     }
 })

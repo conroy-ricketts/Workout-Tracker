@@ -9,6 +9,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 type RootStackParamList = {
     Question7: undefined;
     Question8: undefined;
+    TrackerScreen: undefined;
   };
   type Question7ScreenNavigationProp = StackNavigationProp<
     RootStackParamList,
@@ -19,12 +20,19 @@ type RootStackParamList = {
     RootStackParamList,
     'Question8'
   >;
+  type TrackerScreenNavigationProp = StackNavigationProp<
+    RootStackParamList,
+    'TrackerScreen'
+  >;
   type Question7Props = {
     navigation: Question7ScreenNavigationProp;
   };
   
   type Question8Props = {
     navigation: Question8ScreenNavigationProp;
+  };
+  type TrackerScreenProps = {
+    navigation: TrackerScreenNavigationProp;
   };
   type Question8NavigationProp = StackNavigationProp<RootStackParamList, 'Question8'>;
 export default function Question8({ navigation }: { navigation: Question8NavigationProp }) {
@@ -106,9 +114,8 @@ export default function Question8({ navigation }: { navigation: Question8Navigat
                     onPress={handleChoice4Press}
                     isSelected={Choice4Selected}
                 />
-                {/* Planning for next button to go to home screen after Pull request is approved */}
                 <View style={{position: 'absolute', bottom: -197, right: 30 }}>
-                    <SmallWidthRoundedButton title="Next" onPress={() => console.log('Next button pressed')} />
+                    <SmallWidthRoundedButton title="Next" onPress={() => navigation.navigate('TrackerScreen')} />
                 </View>
                 <View style={{position: 'absolute', top: -80, right: 375 }}>
                     <BackButton onPress={() => navigation.navigate('Question7')}/>

@@ -10,7 +10,12 @@ import { StackNavigationProp } from '@react-navigation/stack'
 type RootStackParamList = {
   Question1: undefined;
   Question2: undefined;
+  OnboardingScreen: undefined;
 };
+type OnboardingScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'OnboardingScreen'
+>;
 
 type Question1ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -21,6 +26,9 @@ type Question2ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'Question2'
 >;
+type OnboardingProps = {
+    navigation: OnboardingScreenNavigationProp;
+  };
 
 type Question1Props = {
   navigation: Question1ScreenNavigationProp;
@@ -115,9 +123,8 @@ export default function Question1({ navigation }: { navigation: Question1Navigat
                 <View style={{position: 'absolute', bottom: -180, right: 30 }}>
                     <SmallWidthRoundedButton title="Next" onPress={() => navigation.navigate('Question2')} />
                 </View>
-                {/* Plan for this back button to go back to Onboarding screen once PR is approved */}
                 <View style={{position: 'absolute', top:-97, right: 375 }}>
-                    <BackButton onPress={() => console.log('Back button pressed')}/>
+                    <BackButton onPress={() => navigation.navigate('OnboardingScreen')}/>
                 </View>
             </View>
         </SurveyBackground>

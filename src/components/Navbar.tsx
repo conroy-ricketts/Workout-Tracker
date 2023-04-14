@@ -49,7 +49,7 @@ const navBarScreenOptions = {
 
 export default function Navbar(): JSX.Element {
     return (
-        <Tab.Navigator screenOptions={navBarScreenOptions}>
+        <Tab.Navigator screenOptions={navBarScreenOptions} initialRouteName="TrackerScreen">
             <Tab.Screen name="WorkoutPlanScreen" component={WorkoutPlanScreen} options={WorkoutTabOptions} />
             <Tab.Screen name="TrackerScreen" component={TrackerScreen} options={TrackerTabOptions} />
             <Tab.Screen name="Pic/StatsScreen" component={StatsNavigator} options={StatsTabOptions} />

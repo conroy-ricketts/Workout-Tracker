@@ -2,9 +2,9 @@ import { useFonts } from 'expo-font'
 import React from 'react'
 import { Animated, Dimensions, Image, StatusBar, StyleSheet, Text, View } from 'react-native'
 import { AppColors } from '../../resources/AppColors'
-
+import FullWidthRectButton from '../../components/FullWidthRectButton'
 const { width, height } = Dimensions.get('window')
-
+import { StackNavigationProp } from '@react-navigation/stack'
 const items = [{
     id: 1,
     image: require('../../../assets/onboarding/Image1.jpg'),
@@ -24,10 +24,37 @@ const items = [{
     title: 'Your own custom designed\n workout plan',
     description:'Your designed workouts will be split into certain amount of days\n you plan to exercise per week based on your schedule\n and progress.'
 }]
+type RootStackParamList = {
+    OnboardingScreen: undefined;
+    Question1: undefined;
+  };
+  type OnboardingScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'OnboardingScreen'
+>;
 
-export default function OnboardingScreen(): JSX.Element {
+type Question1ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Question1'
+>;
+type OnboardingProps = {
+    navigation: OnboardingScreenNavigationProp;
+  };
+
+type Question1Props = {
+  navigation: Question1ScreenNavigationProp;
+};
+
+type OnboardingNavigationProp = StackNavigationProp<RootStackParamList, 'OnboardingScreen'>;
+
+export default function OnboardingScreen({ navigation }: { navigation: OnboardingScreenNavigationProp }) {
     const scrollAnimation = React.useRef(new Animated.Value(0)).current
-    useFonts({'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')})
+    const [loaded] = useFonts({
+        'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')
+    })
+    if (!loaded) {
+        return null
+    }
 
     return (
         <View style = {styles.screen}>
@@ -136,6 +163,9 @@ export default function OnboardingScreen(): JSX.Element {
                     {'Fit 4 U'}
                 </Text>
             </View>
+            <View style={{position: 'absolute', bottom: 25, right: 30 }}>
+                <FullWidthRectButton text='GET STARTED' backgroundColor='#5BC0BE' onPress={() => navigation.navigate('Question1')} />
+            </View>
         </View>
     
     )
@@ -174,7 +204,7 @@ const styles = StyleSheet.create({
     },
     descriptionContainer:{
         position: 'absolute',
-        top: height * .79,
+        top: height<900? height * .77:height * .79,
         zIndex: 3,
     },
     description:{
@@ -212,9 +242,8 @@ const styles = StyleSheet.create({
     indicatorContainer:{
         width: (width * .25),
         height: 4,
-        bottom: (height * 0.32 - 180),
+        bottom: height<900? (height * 0.32 - 155):(height * 0.32 - 180),
         zIndex: 3,
         resizeMode: 'contain'
-
     }
 })
