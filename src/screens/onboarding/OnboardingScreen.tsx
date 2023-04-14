@@ -49,12 +49,12 @@ type OnboardingNavigationProp = StackNavigationProp<RootStackParamList, 'Onboard
 
 export default function OnboardingScreen({ navigation }: { navigation: OnboardingScreenNavigationProp }) {
     const scrollAnimation = React.useRef(new Animated.Value(0)).current
-        const [loaded] = useFonts({
-            'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')
-        })
-        if (!loaded) {
-            return null;
-        }
+    const [loaded] = useFonts({
+        'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')
+    })
+    if (!loaded) {
+        return null
+    }
 
     return (
         <View style = {styles.screen}>
@@ -164,8 +164,8 @@ export default function OnboardingScreen({ navigation }: { navigation: Onboardin
                 </Text>
             </View>
             <View style={{position: 'absolute', bottom: 25, right: 30 }}>
-                    <FullWidthRectButton text='GET STARTED' backgroundColor='#5BC0BE' onPress={() => navigation.navigate('Question1')} />
-                </View>
+                <FullWidthRectButton text='GET STARTED' backgroundColor='#5BC0BE' onPress={() => navigation.navigate('Question1')} />
+            </View>
         </View>
     
     )

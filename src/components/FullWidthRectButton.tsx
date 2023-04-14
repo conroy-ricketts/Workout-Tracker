@@ -1,7 +1,5 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
-import { AppColors } from '../resources/AppColors'
-
 type RectButtonProps = {
     text: string,
     backgroundColor: string,
@@ -36,5 +34,5 @@ const styles = StyleSheet.create({
         textShadowColor: 'rgba(0, 0, 0, 0.25)',
         textShadowOffset: { width: 0, height: 4 },
         textShadowRadius: 4,
-      }
+    }
 })
