@@ -1,18 +1,5 @@
-export function generateMockData(startDate: Date, endDate: Date): WorkoutIndicatorModel[] {
-    const workoutProbability = 0.8
-    const returnList: WorkoutIndicatorModel[] = []
-
-    for (let i = startDate; i <= endDate; i.setDate(i.getDate() + 1)) {
-        const workoutOccurred: boolean = Math.random() < workoutProbability
-
-        returnList.push({
-            dateOccured: new Date(i),
-            indicatorFlag: workoutOccurred
-        })
-    }
-
-    return returnList
-}
+// TODO: We should be using the backend and not a temporary array to store data.
+let tempData: WorkoutIndicatorModel[] = []
 
 export function generateDateRangeForStartDate(startDate: Date, chartRows: number, chartCols: number): DateRangeModel {
     const firstRowMiddleCol: number = (Math.floor(chartCols / 2) * chartRows) + 1
@@ -31,10 +18,22 @@ export function generateDateRangeForStartDate(startDate: Date, chartRows: number
     }
 }
 
-export function getTotalNumberOfWorkoutsCompleted(workoutData: WorkoutIndicatorModel[]) {
+export function getTotalNumberOfWorkoutsCompleted() {
     let numberOfWorkoutsCompleted = 0
-    workoutData.forEach((workoutIndicatorModel) => {
+    tempData.forEach((workoutIndicatorModel) => {
         if (workoutIndicatorModel.indicatorFlag) numberOfWorkoutsCompleted++
     })
     return numberOfWorkoutsCompleted
+}
+
+// TODO: These next 2 functions should not exist. We should be using the backend for this.
+export function storeWorkout(dateOccured: Date) {
+    tempData.push({
+        dateOccured: dateOccured,
+        indicatorFlag: true
+    })
+}
+
+export function getWorkoutData(): WorkoutIndicatorModel[] {
+    return tempData
 }
