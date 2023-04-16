@@ -34,6 +34,9 @@ type RootStackParamList = {
   type Question6Props = {
     navigation: Question6ScreenNavigationProp;
   };
+
+  export let selectedChoice = 1;
+
   type Question5NavigationProp = StackNavigationProp<RootStackParamList, 'Question5'>;
 export default function Question5({ navigation }: { navigation: Question5NavigationProp }) {
     const images = [
@@ -54,6 +57,7 @@ export default function Question5({ navigation }: { navigation: Question5Navigat
     const [Choice4Selected, setChoice4Selected] = useState(false)
 
     const handleChoice1Press = () => {
+        selectedChoice = 1
         setChoice1Selected(true)
         setChoice2Selected(false)
         setChoice3Selected(false)
@@ -61,6 +65,7 @@ export default function Question5({ navigation }: { navigation: Question5Navigat
     }
 
     const handleChoice2Press = () => {
+        selectedChoice = 1
         setChoice1Selected(false)
         setChoice2Selected(true)
         setChoice3Selected(false)
@@ -68,6 +73,7 @@ export default function Question5({ navigation }: { navigation: Question5Navigat
     }
 
     const handleChoice3Press = () => {
+        selectedChoice = 2
         setChoice1Selected(false)
         setChoice2Selected(false)
         setChoice3Selected(true)
@@ -75,6 +81,7 @@ export default function Question5({ navigation }: { navigation: Question5Navigat
     }
 
     const handleChoice4Press = () => {
+        selectedChoice = 3
         setChoice1Selected(false)
         setChoice2Selected(false)
         setChoice3Selected(false)
@@ -109,6 +116,7 @@ export default function Question5({ navigation }: { navigation: Question5Navigat
                     onPress={handleChoice3Press}
                     isSelected={Choice3Selected}
                 />
+
                 <Choices2
                     title="Obsessed with fitness"
                     onPress={handleChoice4Press}
