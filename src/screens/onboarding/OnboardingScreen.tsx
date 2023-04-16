@@ -58,7 +58,7 @@ export default function OnboardingScreen({ navigation }: { navigation: Onboardin
 
     return (
         <View style = {styles.screen}>
-            <StatusBar hidden />
+            <StatusBar />
             <Animated.FlatList 
                 data={items} 
                 bounces = {false}

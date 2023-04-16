@@ -1,7 +1,7 @@
 import moment from 'moment'
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { generateDateRangeForStartDate, generateMockData, getTotalNumberOfWorkoutsCompleted } from '../helpers/ProgressChartDataHelper'
+import { generateDateRangeForStartDate, getTotalNumberOfWorkoutsCompleted, getWorkoutData } from '../helpers/ProgressChartDataHelper'
 import { AppColors } from '../resources/AppColors'
 
 type ChartProps = {
@@ -9,15 +9,14 @@ type ChartProps = {
 }
 
 export default function ProgressChart(props: ChartProps): JSX.Element {
-    const mockData: WorkoutIndicatorModel[] =  generateMockData(
-        new Date('2023-01-01'),
-        new Date('2024-01-01')
-    )
-
-    const startDate: Date = mockData[0].dateOccured
-
     const chartRows = 7
     const chartCols = 18
+
+    // The last indicator in the chart should correspond to today's date.
+    const endDate: Date = new Date()
+    const startDate: Date = new Date(endDate)
+    startDate.setDate(startDate.getDate() - (chartRows * chartCols))
+
     const currentDateRange: DateRangeModel = generateDateRangeForStartDate(startDate, chartRows, chartCols)
   
     const dateLabelFormat = 'MMM Qo'
@@ -26,20 +25,41 @@ export default function ProgressChart(props: ChartProps): JSX.Element {
     const endDateLabel: string = moment(currentDateRange.endDate).utc().format(dateLabelFormat)
 
     const workoutIndicatorColumns: WorkoutIndicatorModel[][] = []
-    for (let i = 0; i < chartCols; i++) {
-        const workoutIndicators: WorkoutIndicatorModel[] = []
-        for (let j = 0; j < chartRows; j++) {
-            const index = j + chartRows * i
-            workoutIndicators.push(mockData[index])
+    let workoutData: WorkoutIndicatorModel[] = getWorkoutData()
+
+    let tempWorkoutIndicatorRow: WorkoutIndicatorModel[] = []
+    let endLoopDate: Date = new Date(currentDateRange.endDate)
+    endLoopDate.setDate(endLoopDate.getDate() + 7)
+
+    // Prepopulate the chart with all indicator flags being false.
+    for (let i = new Date(currentDateRange.startDate); i <= endLoopDate; i.setDate(i.getDate() + 1)) {
+        tempWorkoutIndicatorRow.push({
+            dateOccured: i,
+            indicatorFlag: false
+        })
+
+        if (tempWorkoutIndicatorRow.length == chartRows) {
+            workoutIndicatorColumns.push(tempWorkoutIndicatorRow)
+            tempWorkoutIndicatorRow = []
         }
-        workoutIndicatorColumns.push(workoutIndicators)
     }
+
+    workoutData.forEach(function (data) {
+        let dateVisibleInChart: boolean = data.dateOccured >= currentDateRange.startDate && data.dateOccured <= currentDateRange.endDate
+        if (dateVisibleInChart) {
+            let timeDiff: number = data.dateOccured.getTime() - currentDateRange.startDate.getTime()
+            let dayDiff: number = Math.round(timeDiff / (1000 * 3600 * 24))
+            let i: number = Math.floor(dayDiff / chartRows)
+            let j: number = dayDiff % chartRows
+            workoutIndicatorColumns[i][j].indicatorFlag = true
+        }
+    })
 
     const indicatorOnColor: string = AppColors.SeaSerpent
     const indicatorOffColor: string = AppColors.White
     const textColor: string = AppColors.White
 
-    const numberOfWorkoutsCompleted = getTotalNumberOfWorkoutsCompleted(mockData)
+    const numberOfWorkoutsCompleted = getTotalNumberOfWorkoutsCompleted()
 
     const compactChart: JSX.Element = 
         <View style={{width: '100%', paddingHorizontal: 15}}>
