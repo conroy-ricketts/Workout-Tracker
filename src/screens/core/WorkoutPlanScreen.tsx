@@ -8,9 +8,11 @@ import { selectedChoice } from '../survey/5Relationship'
 export default function WorkoutPlanScreen(): JSX.Element {
     let workoutPlan: WorkoutModel[] = []
     getWorkoutPlan(selectedChoice).then((plan) => {
+
         workoutPlan = plan
     })
-
+    //console.log(workoutPlan, selectedChoice)
+    console.log(`Workout plan is ${JSON.stringify(workoutPlan)}`);
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: AppColors.MaastrichtBlue}}>
             <Text style={{fontWeight: '700', fontSize: 20, alignSelf: 'center', color: AppColors.White, paddingBottom: 20}}>

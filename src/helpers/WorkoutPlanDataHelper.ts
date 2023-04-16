@@ -34,12 +34,12 @@ export function convertSecondsToTimeFormat(seconds: number): string {
     return date.toISOString().substring(14, 19)
 }
 
-export const getWorkoutPlan = async (exp_level: number): Promise<WorkoutModel[]> => {
+export const getWorkoutPlan = async (exp_level: number): Promise<string> => {
   try {
     const exercisesResponse = await fetchExercises();
+
     if (!Array.isArray(exercisesResponse.results)) {
-      console.error('fetchExercises did not return an array:', exercisesResponse.results);
-      return [];
+      throw new Error("fetchExercises did not return an array");
     }
 
     // Get only exercises that are resistance or cardio
@@ -88,10 +88,10 @@ export const getWorkoutPlan = async (exp_level: number): Promise<WorkoutModel[]>
       return { name: exercise.name, sets: [set] };
     });
 
-    return workoutPlan;
+    //console.log("Workout plan is " + JSON.stringify(workoutPlan));
+    return JSON.stringify(workoutPlan);
   } catch (error) {
     console.error('Failed to fetch exercises', error);
-    return [];
+    throw new Error("fetchExercises did not return an array");
   }
 };
-  
