@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchExercises } from '../../backend/WorkoutAPI/exercises';
+import { fetchExercises } from '../../backend/workoutAPI/exercises';
 
 //The value of selectedChoice is what would be passed into the generateWorkoutPlan function
 //import { selectedChoice } from '../screens/survey/5Relationship';
