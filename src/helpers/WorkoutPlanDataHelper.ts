@@ -83,4 +83,63 @@ export const getWorkoutPlan = async (exp_level: number): Promise<WorkoutModel[]>
 
   return workoutPlan;
 };
+
+export function getFakeWorkoutPlan(): WorkoutModel[] {
+  return [
+      {
+          name: 'Lunge (Dumbbell)',
+          sets: [
+              {
+                  weight: 25,
+                  reps: 12
+              }, {
+                  weight: 25,
+                  reps: 12
+              }, {
+                  weight: 25,
+                  reps: 12
+              }
+          ]
+      }, {
+          name: 'Drag Curl (Dumbbell)',
+          sets: [
+              {
+                  weight: 25,
+                  reps: 12
+              }, {
+                  weight: 25,
+                  reps: 12
+              }, {
+                  weight: 25,
+                  reps: 12
+              }
+          ]
+      }, {
+          name: 'Lateral Raise (Dumbbell)',
+          sets: [
+              {
+                  weight: 25,
+                  reps: 12
+              }, {
+                  weight: 25,
+                  reps: 12
+              }, {
+                  weight: 25,
+                  reps: 12
+              }
+          ]
+      }, {
+          name: 'Plank',
+          sets: [
+              {
+                  seconds: 45
+              }, {
+                  seconds: 45
+              }, {
+                  seconds: 45
+              }
+          ]
+      }
+  ]
+}
   

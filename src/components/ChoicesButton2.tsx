@@ -5,13 +5,13 @@ type ButtonProps = {
   title: string,
   onPress: () => void,
   isSelected?: boolean,
-  
+  addHeight?: boolean
 }
 
 export default function Choices2 (props: ButtonProps): JSX.Element {
     return (
-        <TouchableOpacity style={[styles.button, props.isSelected && styles.buttonSelected]} onPress={props.onPress}>
-            <Text style={[styles.buttonText, props.isSelected && styles.buttonTextSelected]}>{props.title}</Text>
+        <TouchableOpacity style={[styles.button, props.isSelected && styles.buttonSelected, props.addHeight && {height: 60}]} onPress={props.onPress}>
+            <Text style={[styles.buttonText, props.isSelected && styles.buttonTextSelected, props.addHeight && {bottom: 10}]}>{props.title}</Text>
         </TouchableOpacity>
     )
 }
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '600',
         height: 50,
-        bottom: 10,
         textAlign: 'center'
     },
     buttonTextSelected: {

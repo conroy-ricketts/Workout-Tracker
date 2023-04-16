@@ -110,6 +110,7 @@ export default function Question5({ navigation }: { navigation: Question5Navigat
                     title="Worked out in the past and want to get back into it"
                     onPress={handleChoice2Press}
                     isSelected={Choice2Selected}
+                    addHeight={true}
                 />
                 <Choices2
                     title="Currently work out"
