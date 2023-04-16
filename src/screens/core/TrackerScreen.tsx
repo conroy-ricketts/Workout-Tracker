@@ -1,33 +1,33 @@
+import { StackNavigationProp } from '@react-navigation/stack'
 import { useFonts } from 'expo-font'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import DateTimePickerModal from "react-native-modal-datetime-picker"
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FullWidthRoundButton from '../../components/FullWidthRoundButton'
 import ProgressChart from '../../components/ProgressChart'
+import { storeWorkout } from '../../helpers/ProgressChartDataHelper'
 import { AppColors } from '../../resources/AppColors'
-import { StackNavigationProp } from '@react-navigation/stack'
+
+type TrackerScreenNavigationProp = StackNavigationProp<RootStackParamList, 'TrackerScreen'>;
+type Question1ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Question1'>;
+type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'TrackerScreen'>;
+
 type RootStackParamList = {
     TrackerScreen: undefined;
     Question1: undefined;
-  };
-  type TrackerScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'TrackerScreen'
->;
-  type Question1ScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Question1'
->;
+};
 type TrackerScreenProps = {
     navigation: TrackerScreenNavigationProp;
-  };
-  type Question1Props = {
+};
+type Question1Props = {
     navigation: Question1ScreenNavigationProp;
-  };
-type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'TrackerScreen'>;
+};
 
-export default function TrackerScreen({ navigation }: { navigation: ScreenNavigationProp }) {
+export default function TrackerScreen({ navigation }: { navigation: ScreenNavigationProp }): JSX.Element {
     const [progressChartType, setPogressChartType] = useState<'compact' | 'normal'>('compact')
+    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
+
     useFonts({'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')})
 
     return (
@@ -44,7 +44,7 @@ export default function TrackerScreen({ navigation }: { navigation: ScreenNaviga
                         text='Complete a Workout'
                         backgroundColor={AppColors.SeaSerpent}
                         textColor={AppColors.MaastrichtBlue}
-                        onPress={() => {}} 
+                        onPress={() => setIsDatePickerOpen(true)} 
                     />
                 </View>
                 <View style={reusedStyles.buttonView}>
@@ -64,6 +64,15 @@ export default function TrackerScreen({ navigation }: { navigation: ScreenNaviga
                     />
                 </View>
             </View>
+            <DateTimePickerModal
+                isVisible={isDatePickerOpen}
+                mode="date"
+                onConfirm={(date) => {
+                    storeWorkout(date)
+                    setIsDatePickerOpen(false)
+                }}
+                onCancel={() => setIsDatePickerOpen(false)}
+            />
         </SafeAreaView>
     )
 }
