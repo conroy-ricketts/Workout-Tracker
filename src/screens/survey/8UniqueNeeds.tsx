@@ -108,6 +108,7 @@ export default function Question8({ navigation }: { navigation: Question8Navigat
                     title="Injury that affects my physical activity"
                     onPress={handleChoice3Press}
                     isSelected={Choice3Selected}
+                    addHeight={true}
                 />
                 <Choices2
                     title="None of the above"

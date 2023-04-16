@@ -8,6 +8,7 @@ import FullWidthRoundButton from '../../components/FullWidthRoundButton'
 import ProgressChart from '../../components/ProgressChart'
 import { storeWorkout } from '../../helpers/ProgressChartDataHelper'
 import { AppColors } from '../../resources/AppColors'
+import { LogBox } from 'react-native';
 
 type TrackerScreenNavigationProp = StackNavigationProp<RootStackParamList, 'TrackerScreen'>;
 type Question1ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Question1'>;
@@ -29,6 +30,8 @@ export default function TrackerScreen({ navigation }: { navigation: ScreenNaviga
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false)
 
     useFonts({'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')})
+    LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+    LogBox.ignoreAllLogs();//Ignore all log notifications
 
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: AppColors.MaastrichtBlue, justifyContent: 'space-between'}}>

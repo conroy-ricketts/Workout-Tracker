@@ -1,10 +1,12 @@
 import { useFonts } from 'expo-font'
 import React from 'react'
-import { Animated, Dimensions, Image, StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Animated, Dimensions, Image, StyleSheet, Text, View } from 'react-native'
 import { AppColors } from '../../resources/AppColors'
 import FullWidthRectButton from '../../components/FullWidthRectButton'
 const { width, height } = Dimensions.get('window')
 import { StackNavigationProp } from '@react-navigation/stack'
+import { StatusBar } from 'expo-status-bar'
+
 const items = [{
     id: 1,
     image: require('../../../assets/onboarding/Image1.jpg'),
@@ -58,7 +60,7 @@ export default function OnboardingScreen({ navigation }: { navigation: Onboardin
 
     return (
         <View style = {styles.screen}>
-            <StatusBar />
+            <StatusBar style='light' />
             <Animated.FlatList 
                 data={items} 
                 bounces = {false}
@@ -163,7 +165,7 @@ export default function OnboardingScreen({ navigation }: { navigation: Onboardin
                     {'Fit 4 U'}
                 </Text>
             </View>
-            <View style={{position: 'absolute', bottom: 25, right: 30 }}>
+            <View style={{position: 'absolute', bottom: 60, right: 30 }}>
                 <FullWidthRectButton text='GET STARTED' backgroundColor='#5BC0BE' onPress={() => navigation.navigate('Question1')} />
             </View>
         </View>
@@ -174,6 +176,7 @@ export default function OnboardingScreen({ navigation }: { navigation: Onboardin
 const styles = StyleSheet.create({
     screen:{
         flex: 1,
+        backgroundColor: 'black'
     },
     item: {
         position:'relative',
@@ -181,7 +184,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         overflow:'hidden',
         width,
-        height,
+        height
     },
     image:{
         width: width,
@@ -209,6 +212,7 @@ const styles = StyleSheet.create({
     },
     description:{
         fontSize: 11,
+        paddingTop: 4,
         color: AppColors.White,
         textAlign: 'center',
         fontWeight: '400',
@@ -229,7 +233,7 @@ const styles = StyleSheet.create({
     },
     fixedImageContainer:{
         position: 'absolute',
-        bottom: -10,
+        bottom: 0,
         zIndex: 2,
     },
     fixedImage:{

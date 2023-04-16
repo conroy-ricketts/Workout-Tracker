@@ -4,6 +4,8 @@ import { Avatar, Button } from 'react-native-paper'
 import * as ImagePicker from 'expo-image-picker'
 import SwitchScreensButton from '../../components/StatsButton'
 import { StackNavigationProp } from '@react-navigation/stack'
+import { useFonts } from 'expo-font'
+import { AppColors } from '../../resources/AppColors'
 const { width, height } = Dimensions.get('window')
 type RootStackParamList = {
     PictureAlbum: undefined;
@@ -36,6 +38,7 @@ interface Photo {
 
 export default function PictureAlbum({ navigation }: { navigation: PictureAlbumNavigationProp }) {
     const [photos, setPhotos] = useState<Photo[]>([{ id: 1, image: null }])
+    useFonts({'Michroma-Regular': require('../../../assets/fonts/Michroma-Regular.ttf')})
 
     const createPhotos = useMemo(() => {
         const defaultCard = photos.filter((photo, index) => (index === 0 && !photo.image ? null : photo)) 
@@ -108,7 +111,10 @@ export default function PictureAlbum({ navigation }: { navigation: PictureAlbumN
     return (
         <SafeAreaView style={styles.Container}>
             <View style={styles.appTitleContainer}>
-                <Image source={require('../../../assets/Fit4U(WhiteLOGO).png')} style={styles.appTitle} />
+                {/* <Image source={require('../../../assets/Fit4U(WhiteLOGO).png')} style={styles.appTitle} /> */}
+                <Text style={{textAlign: 'center', fontStyle: 'normal', fontFamily: 'Michroma-Regular', fontWeight: '400', fontSize: 48, color: AppColors.White}}>
+                    {'Fit 4 U'}
+                </Text>
             </View>
             <View style={styles.mainContainer}>
                 <ScrollView
@@ -169,7 +175,7 @@ const styles = StyleSheet.create({
         borderColor: '#1C2541',
         alignSelf: 'center',
         marginRight: 25,
-        marginBottom: height < 900 ? 15 : -50,
+        marginBottom: -10
     },
     AddPhotoContainer: {
         position: 'absolute',
@@ -192,7 +198,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#3A506B'
     },
     ButtonContainer:{
-        top:height<900? 40:5,
+        paddingTop: 60,
         left:height<900? 20:20,
         zIndex:3
     }

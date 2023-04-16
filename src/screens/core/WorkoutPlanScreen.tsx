@@ -1,15 +1,17 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { convertSecondsToTimeFormat, getWorkoutPlan, workoutSetUsesReps } from '../../helpers/WorkoutPlanDataHelper'
+import { convertSecondsToTimeFormat, getWorkoutPlan, getFakeWorkoutPlan, workoutSetUsesReps } from '../../helpers/WorkoutPlanDataHelper'
 import { AppColors } from '../../resources/AppColors'
 import { selectedChoice } from '../survey/5Relationship'
 
 export default function WorkoutPlanScreen(): JSX.Element {
-    let workoutPlan: WorkoutModel[] = []
-    getWorkoutPlan(selectedChoice).then((plan) => {
-        workoutPlan = plan
-    })
+    // let workoutPlan: WorkoutModel[] = []
+    // getWorkoutPlan(selectedChoice).then((plan) => {
+    //     workoutPlan = plan
+    // })
+
+    let workoutPlan = getFakeWorkoutPlan()
 
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: AppColors.MaastrichtBlue}}>
