@@ -16,10 +16,10 @@ export interface ExerciseModel {
     seconds?: number;
   }
   
-  export interface WorkoutModel {
-    name: string;
-    sets: SetModel[];
-  }
+  // export interface WorkoutModel {
+  //   name: string;
+  //   sets: SetModel[];
+  // }
 
 export function workoutSetUsesReps(
     workoutSet: WorkoutSetWithReps | WorkoutSetWithTime
