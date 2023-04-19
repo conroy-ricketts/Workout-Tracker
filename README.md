@@ -30,7 +30,7 @@ Using our mobile app, users are able to get a a personalized workout plan based 
 - Node.js
 
 ## Challenges we ran into
-- Project scope. We were ambitous with our ideas for this project, and due to that we found ourselves not able to finish everything we envisioned. So, we got together as a team and made ciritical, thoughtful design decisions in order to determine what was absolutely necessary for both our minimal viable product and the end-user experience.
+- Project scope. We were ambitious with our ideas for this project, and due to that we found ourselves not able to finish everything we envisioned. So, we got together as a team and made critical, thoughtful design decisions in order to determine what was absolutely necessary for both our minimal viable product and the end-user experience.
 
 ## What we learned
 - New tools and technologies. Most of our team was new to the tools and technologies that we used in the implementation of our app. So, this project was a great opportunity to broaden our skill sets, especially when it comes to React Native and TypeScript!
